@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-const EditEmployee = (props) => {
+function EditEmployee(props){
   const[name, setName] = useState(props.name);
   const[role, setRole] = useState(props.role);
 
@@ -10,7 +9,6 @@ const EditEmployee = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
   return (
     <>
       <button onClick={handleShow} className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2">
@@ -27,10 +25,18 @@ const EditEmployee = (props) => {
           <Modal.Title>Update Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form id="editEmployee" className="w-full max-w-sm">
+          <form 
+            onSubmit={(e) => {
+              handleClose();
+              e.preventDefault();
+              props.updateEmployee(props.id, name, role);
+            }}
+            id="editEmployee" 
+            className="w-full max-w-sm"
+          >
             <div className="md:flex md:items-center mb-6">
               <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
                   Full Name
                 </label>
               </div>
@@ -48,7 +54,7 @@ const EditEmployee = (props) => {
             </div>
             <div className="md:flex md:items-center mb-6">
               <div className="md:w-1/3">
-                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="inline-full-name">
                   Role
                 </label>
               </div>

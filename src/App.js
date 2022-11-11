@@ -9,21 +9,35 @@ function App() {
 
   const[employees, setEmployees] = useState([
     {
+      id: 1,
       name: "Minh",
       role: "intern",
       image: imgURL
     },
     {
+      id: 2,
       name: "Minh2",
       role: "intern",
       image: imgURL
     },
     {
+      id: 3,
       name: "Minh3",
       role: "intern",
       image: imgURL
     },
   ]);
+
+  function updateEmployee(id, newName, newRole){
+    console.log("Calling from App.js")
+    const updatedEmployee = employees.map((employee) => {
+      if(id === employee.id){
+        return{...employee, name: newName, role: newRole};
+      }
+      return employee
+    });
+    setEmployees(updatedEmployee);
+  }
 
   return (
     <div>
@@ -31,7 +45,14 @@ function App() {
       <div className="flex flex-wrap justify-center">
         {employees.map((employee) => {
           return(
-            <Employee key={employee.name} name={employee.name} role={employee.role} image={employee.image}/>
+            <Employee 
+              key={employee.id} 
+              id={employee.id}
+              name={employee.name} 
+              role={employee.role} 
+              image={employee.image}
+              updateEmployee={updateEmployee}
+            />
           );
         })}
       </div>
