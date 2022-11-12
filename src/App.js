@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import './App.css';
 import Employee from './components/Employees';
+import AddEmployee from './components/AddEmployee';
 
 function App() {
   const imgURL = "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -55,6 +56,7 @@ function App() {
             />
           );
         })}
+        <AddEmployee/>
       </div>
     </div>
   );
