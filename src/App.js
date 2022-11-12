@@ -4,6 +4,8 @@ import { useState } from 'react';
 import './App.css';
 import Employee from './components/Employees';
 import AddEmployee from './components/AddEmployee';
+import EditEmployee from './components/EditEmployee';
+
 
 function App() {
   const imgURL = "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -45,6 +47,7 @@ function App() {
       <input type="text"/>
       <div className="flex flex-wrap justify-center">
         {employees.map((employee) => {
+          const editEmployee = <EditEmployee id={employee.id} name={employee.name} role={employee.role} updateEmployee={updateEmployee}/>
           return(
             <Employee 
               key={employee.id} 
@@ -52,7 +55,7 @@ function App() {
               name={employee.name} 
               role={employee.role} 
               image={employee.image}
-              updateEmployee={updateEmployee}
+              editEmployee={editEmployee}
             />
           );
         })}
