@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 
 import '../App.css';
-import Header from './Header';
 import Employee from '../components/Employee';
 import AddEmployee from '../components/AddEmployee';
 import EditEmployee from '../components/EditEmployee';
@@ -45,7 +44,6 @@ const Employees = () => {
 
   return (
     <div>
-      <Header/>
       <div className="flex flex-wrap justify-center my-4">
         {employees.map((employee) => {
           const editEmployee = <EditEmployee id={employee.id} name={employee.name} role={employee.role} updateEmployee={updateEmployee}/>
